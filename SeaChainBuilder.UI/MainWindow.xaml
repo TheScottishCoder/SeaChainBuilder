@@ -1,0 +1,36 @@
+﻿<Window x:Class="SeaChainBuilder.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SeaChainBuilder.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1600">
+    <Grid>
+        <Grid>
+            <Grid Background="#FF383838">
+                <UniformGrid x:Name="UniformGrid" Background="#FF626262" Width="1000" Height="1000" Margin="10,42,490,42" PreviewMouseMove="GridClickEvent"/>
+                <TextBox x:Name="txt_Height" Text="Height" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1137,50,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="30"/>
+                <TextBox x:Name="txt_Width"  Text="Width"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1343,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="30"/>
+                <Button Content="Create" HorizontalAlignment="Left" Margin="1132,101,0,0" VerticalAlignment="Top" Height="36" Width="401" Click="Btn_CreateGrid"/>
+
+                <ListBox x:Name="list_Textures" Margin="1111,162,39,735" PreviewKeyDown="TextureListKeyEvent" SelectionMode="Single"/>
+
+                <TextBox x:Name="txt_Texture" Text="Texture Name" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1111,372,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="30"/>
+                <TextBox x:Name="txt_TextureID" Text="Texture ID"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1371,372,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="30"/>
+                <ListBox x:Name="list_Colors" Margin="1111,424,39,508" SelectionChanged="UpdateCanvasEvent" SelectionMode="Single"/>
+                <Canvas x:Name="color_display" Height="36" Width="36" Margin="1132,581,432,447"/>
+                <Button Content="Add Texture" HorizontalAlignment="Left" Margin="1206,581,0,0" VerticalAlignment="Top" Height="36" Width="345" Click="Btn_AddTexture"/>
+
+                <Button Content="Fill Map" HorizontalAlignment="Left" Margin="1111,656,0,0" VerticalAlignment="Top" Height="36" Width="121" Click="Btn_FillSheet"/>
+                <Button Content="Increase Brush Size" HorizontalAlignment="Left" Margin="1440,656,0,0" VerticalAlignment="Top" Height="36" Width="121" Click="Btn_IncreaseBrush"/>
+                <Button Content="Decrease Brush Size" HorizontalAlignment="Left" Margin="1276,656,0,0" VerticalAlignment="Top" Height="36" Width="120" Click="Btn_DecreaseBrush"/>
+
+                <Button Content="Save" HorizontalAlignment="Left" Margin="1160,1006,0,0" VerticalAlignment="Top" Height="36" Width="401" Click="Btn_Test"/>
+                <TextBox x:Name="txt_Position" IsReadOnly="True" Text="Position" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1111,877,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="30"/>
+                <TextBox x:Name="txt_Tag" Text="Tag"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="1371,877,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="30"/>
+                <Button Content="Add Tag" HorizontalAlignment="Left" Margin="1160,933,0,0" VerticalAlignment="Top" Height="36" Width="345" Click="Btn_AddTag"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
