@@ -12,7 +12,7 @@ This will create the grid, it will seem blank once created until you fill it wit
 
 Creating Textures:
 1. Enter the texture name
-2. Enter the ID
+2. Enter the ID - MUST BE A SINGLE CHARACTER
 3. Select a appropriate colour.
 4. Click add texture.
 
