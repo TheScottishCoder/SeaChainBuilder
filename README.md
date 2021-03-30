@@ -5,6 +5,7 @@ Creating the grid:
 1. Enter the height 
 2. Enter the width
 3. Press "Create" button
+
 TIP: Keep the height and width equal numbers.
 This will create the grid, it will seem blank once created until you fill it with textures.
 
