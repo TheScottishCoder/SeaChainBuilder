@@ -37,7 +37,7 @@ namespace SeaChainBuilder.UI
         public List<Tag> tags = new List<Tag>();
         public Vector currentPos = new Vector();
 
-        private void Btn_CreateGrid(object sender, RoutedEventArgs e)
+        private void Btn_CreateGrid(object sender, RoutedEventArgs e) // Creates the rows and columns in UniformGrid
         {
             UniformGrid.Rows = Convert.ToInt32(txt_Height.Text);
             UniformGrid.Columns = Convert.ToInt32(txt_Width.Text);
@@ -67,8 +67,8 @@ namespace SeaChainBuilder.UI
             }
 
             _dataMap._map = t;
-        }
-        private void Btn_Test(object sender, RoutedEventArgs e) // this is the method for saving
+        } 
+        private void Btn_Test(object sender, RoutedEventArgs e) // this is the method for saving i got lazy and turned a temp button into a perma
         {
             string temp = "";
 
@@ -88,7 +88,7 @@ namespace SeaChainBuilder.UI
 
             File.WriteAllText("tags.txt", serializedJson);
         }
-        private void Btn_AddTexture(object sender, RoutedEventArgs e)
+        private void Btn_AddTexture(object sender, RoutedEventArgs e) // Adds texture to a texutre list
         {
             Texture t = new Texture();
             t.Name = txt_Texture.Text;
@@ -122,8 +122,8 @@ namespace SeaChainBuilder.UI
 
             textures.Add(t);
             UpdateTextureList();
-        }
-        private void UpdateTextureList()
+        } 
+        private void UpdateTextureList() // keeps the texture list updated
         {
             list_Textures.Items.Clear();
 
@@ -131,16 +131,16 @@ namespace SeaChainBuilder.UI
             {
                 list_Textures.Items.Add(item.Name + " : " + item.ID + " : " + item.Color.ToString());
             }
-        }
-        private void TextureListKeyEvent(object sender, KeyEventArgs e)
+        } 
+        private void TextureListKeyEvent(object sender, KeyEventArgs e) // allows deleting of textures 
         {
             if(e.Key == Key.Delete)
             {
                 textures.RemoveAt(list_Textures.SelectedIndex);
                 UpdateTextureList();
             }
-        }
-        private void ColorList()
+        } 
+        private void ColorList() // adds all possible colors from Brush (SolidBrushColor) to the list
         {
             Type brushesType = typeof(Brushes);
             var properties = brushesType.GetProperties(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
@@ -152,8 +152,8 @@ namespace SeaChainBuilder.UI
 
                 list_Colors.Items.Add(name);
             }
-        }
-        private void UpdateCanvasEvent(object sender, SelectionChangedEventArgs e)
+        } 
+        private void UpdateCanvasEvent(object sender, SelectionChangedEventArgs e) // Once you select a color it'll update the color display
         {
             Type brushesType = typeof(Brushes);
             var properties = brushesType.GetProperties(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
@@ -169,7 +169,7 @@ namespace SeaChainBuilder.UI
                 }
             }
         }
-        private void GridClickEvent(object sender, MouseEventArgs e)
+        private void GridClickEvent(object sender, MouseEventArgs e) // when you click the grid it'll handle you trying to place a texture with left click or select a cell with right click
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
@@ -220,7 +220,7 @@ namespace SeaChainBuilder.UI
                 txt_Position.Text = "X: " + currentPos.X + " Y: " + currentPos.Y;
             }
         }
-        private Vector GetGridVector()
+        private Vector GetGridVector() // Gets the X and Y in the grid based off of mouse position relative to the grid.
         {
             var point = Mouse.GetPosition(UniformGrid);
 
@@ -246,7 +246,7 @@ namespace SeaChainBuilder.UI
 
             return new Vector(x, y);
         }
-        private void Btn_FillSheet(object sender, RoutedEventArgs e)
+        private void Btn_FillSheet(object sender, RoutedEventArgs e) // fill the canvas with a solid texture
         {
             var result = MessageBox.Show("Are you sure you want to fill the entire canvas? \nThis will overwrite current tiles", "Warning!", MessageBoxButton.YesNo);
 
@@ -271,21 +271,21 @@ namespace SeaChainBuilder.UI
                 }
             }
         }
-        private Vector Int_to_Vec(int i)
+        private Vector Int_to_Vec(int i) // convert a int to a vector (Really doesn't work)
         {
                 int x = (i - 1) % 9;
                 int y = (i - 1) / 9;
 
                 return new Vector(x, y);
         }
-        private int Vec_to_int(Vector v)
+        private int Vec_to_int(Vector v) // Convert a vector to a int (Works so far i think)
         {
             return Convert.ToInt32((v.Y * _dataMap.width) + v.X);
         }
-        private void Btn_IncreaseBrush(object sender, RoutedEventArgs e) => brushPlus = true;
-        private void Btn_DecreaseBrush(object sender, RoutedEventArgs e) => brushPlus = false;
+        private void Btn_IncreaseBrush(object sender, RoutedEventArgs e) => brushPlus = true; // Increase the brush size (Enable brush plus)
+        private void Btn_DecreaseBrush(object sender, RoutedEventArgs e) => brushPlus = false; // Decrease the brush size (Disable brush plus)
 
-        private void Btn_AddTag(object sender, RoutedEventArgs e)
+        private void Btn_AddTag(object sender, RoutedEventArgs e) // add a tag (I apologise for the mess)
         {
             bool found = false;
 
@@ -304,11 +304,11 @@ namespace SeaChainBuilder.UI
             if(found == false)
             {
                 CreateTag();
-                Btn_AddTag(null, null);
+                Btn_AddTag(null, null); // literally rerun the method, i know its horrific.
             }
         }
 
-        private void CreateTag()
+        private void CreateTag() // create a tag if it doesn't exist.
         {
             Tag t = new Tag();
             t.Position = currentPos;
